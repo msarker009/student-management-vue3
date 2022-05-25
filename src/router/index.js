@@ -5,7 +5,7 @@ import RegisterPage from '../views/auth/RegisterPage.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/admin/dashboard',
     name: 'home',
     component: HomePage
   },

@@ -37,6 +37,21 @@ export const auth={
                 })
             })
            
+        },
+        LOGOUT(context){
+            axios.defaults.headers.common['Authorization']="Bearer "+ context.state.auth_token;
+            return new Promise((resolve,reject)=>{
+                axios.post('/logout')
+                .then((result) => {
+                    //console.log(result.data);
+                    context.commit('SET_AUTH_LOGOUT')
+                    resolve(result)
+                }).catch((error) => {
+                    //console.log(error.response.data.errors);
+                    reject(error)
+                })
+            })
+           
         }
     },
     mutations: {
@@ -49,6 +64,16 @@ export const auth={
             state.auth_info.email=info.email;
             state.auth_info.phone=info.phone;
             state.auth_info.image=info.image;
+        },
+        SET_AUTH_LOGOUT(state){
+            state.auth_token=null;
+            state.auth_status=false;
+            state.auth_info={
+                name:null,
+                email:null,
+                phone:null,
+                image:null
+            }
         }
         
     },
