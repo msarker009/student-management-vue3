@@ -47,7 +47,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link" @click.prevent="adminLogout">
-                                <i class="nav-icon far fa-circle text-info"></i>
+                                <i class="nav-icon far fa-circle text-danger"></i>
                                 <p>Logout</p>
                             </a>
                         </li>

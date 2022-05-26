@@ -52,6 +52,36 @@ export const auth={
                 })
             })
            
+        },
+        REGISTER(context,formData){
+            return new Promise((resolve,reject)=>{
+                axios.post('/register',formData)
+                .then((result)=>{
+                    //console.log(result.data);
+                    context.commit('SET_AUTH_TOKEN',result.data.access_token)
+                    context.commit('SET_AUTH_INFO',result.data.user)
+                    resolve(result)
+
+                }).catch((error)=>{
+                    //console.log(result.response.data.error);
+                    reject(error)
+
+                })
+            })
+               
+            
+        },
+        FORGATE(context,formData){
+            return new Promise((resolve,reject)=>{
+                axios.post('/forgate', formData)
+                .then((result) => {
+                    //console.log(result.data);
+                    resolve(result)
+                }).catch((error) => {
+                    //console.log(error.response.data.errors);
+                    reject(error)
+                })
+            })
         }
     },
     mutations: {
